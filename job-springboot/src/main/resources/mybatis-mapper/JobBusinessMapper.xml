@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.job.dao.JobBusinessMapper" >
+  <resultMap id="BaseResultMap" type="com.job.model.JobBusiness" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="job_action" property="jobAction" jdbcType="VARCHAR" />
+    <result column="job_date" property="jobDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, job_name, job_action, job_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.job.model.JobBusinessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from job_business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from job_business
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from job_business
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.job.model.JobBusinessExample" >
+    delete from job_business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.job.model.JobBusiness" >
+    insert into job_business (id, job_name, job_action, 
+      job_date)
+    values (#{id,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, #{jobAction,jdbcType=VARCHAR}, 
+      #{jobDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.job.model.JobBusiness" >
+    insert into job_business
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+      <if test="jobAction != null" >
+        job_action,
+      </if>
+      <if test="jobDate != null" >
+        job_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobAction != null" >
+        #{jobAction,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDate != null" >
+        #{jobDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.job.model.JobBusinessExample" resultType="java.lang.Integer" >
+    select count(*) from job_business
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update job_business
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobName != null" >
+        job_name = #{record.jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobAction != null" >
+        job_action = #{record.jobAction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobDate != null" >
+        job_date = #{record.jobDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update job_business
+    set id = #{record.id,jdbcType=VARCHAR},
+      job_name = #{record.jobName,jdbcType=VARCHAR},
+      job_action = #{record.jobAction,jdbcType=VARCHAR},
+      job_date = #{record.jobDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.model.JobBusiness" >
+    update job_business
+    <set >
+      <if test="jobName != null" >
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobAction != null" >
+        job_action = #{jobAction,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDate != null" >
+        job_date = #{jobDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.job.model.JobBusiness" >
+    update job_business
+    set job_name = #{jobName,jdbcType=VARCHAR},
+      job_action = #{jobAction,jdbcType=VARCHAR},
+      job_date = #{jobDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
