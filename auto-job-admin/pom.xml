@@ -35,7 +35,7 @@
         <mybatis.version>3.4.5</mybatis.version>
 
         <groovy-all.version>2.4.13</groovy-all.version>
-        <quartz.version>2.3.0</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
 
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
         <!-- 许雪里自动任务版本 -->
