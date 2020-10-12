@@ -18,7 +18,7 @@
         <aspectjweaver.version>1.8.13</aspectjweaver.version>
         <slf4j-api.version>1.7.25</slf4j-api.version>
         <freemarker.version>2.3.23</freemarker.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
 
         <jetty-server.version>9.2.24.v20180105</jetty-server.version>
         <hessian.version>4.0.51</hessian.version>
