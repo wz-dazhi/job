@@ -39,7 +39,7 @@
 
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
         <!-- 许雪里自动任务版本 -->
-        <com.xuxueli.version>1.9.1</com.xuxueli.version>
+        <com.xuxueli.version>2.3.1</com.xuxueli.version>
     </properties>
 
     <dependencies>
