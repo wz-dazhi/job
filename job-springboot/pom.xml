@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<com.xuxueli.version>1.9.1</com.xuxueli.version>
+		<com.xuxueli.version>2.3.1</com.xuxueli.version>
 	</properties>
 
 	<dependencies>
